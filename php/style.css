@@ -1,0 +1,42 @@
+
+
+body {
+    color: red;
+}
+background {
+    position: absolute;
+    width: 680px;
+    height: 1080px;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+}
+
+
+ Image{
+    position: absolute;
+    width: 1240px;
+    height: 1080px;
+    left: 680px;
+    top: 0px;
+}
+
+
+Base{
+    position: absolute;
+    width: 1240px;
+    height: 1080px;
+    left: 680px;
+    top: 0px;
+    background: #C4C4C4;
+}
+
+image_summer{
+    position: absolute;
+    width: 1620px;
+    height: 1080px;
+    left: 680px;
+    top: 0px;
+
+    background: url(17888724.jpg);
+}

@@ -1,0 +1,57 @@
+<div class="status"></div>
+
+<body><div>pineapplesummer</div></body>
+<form action="#" id="subsFrm" method="post">
+    <input type="email" id="email" placeholder="E-mail" required="">
+    <input type="button" id="subscribeBtn" value="Subscribe Now">
+</form>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#subscribeBtn').on('click', function(){
+            
+            $('.status').html('');
+            
+            
+            var regEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+            
+            var email = $('#email').val();
+            
+           
+            }if(email.trim() == '' ){
+                alert('Please enter your email.');
+                $('#email').focus();
+                return false;
+            }else if(email.trim() != '' && !regEmail.test(email)){
+                alert('Please enter a valid email.');
+                $('#email').focus();
+                return false;
+            }else{
+               
+                $.ajax({
+                    type:'POST',
+                    url:'subscription.php',
+                    dataType: "json",
+                    data:{subscribe:1,email:email},
+                    beforeSend: function () {
+                        $('#subscribeBtn').attr("disabled", "disabled");
+                        $('.content-frm').css('opacity', '.5');
+                    },
+                    success:function(data){
+                        if(data.status == 'ok'){
+                            $('#subsFrm')[0].reset();
+                            $('.status').html('<p class="success">'+data.msg+'</p>');
+                        }else{
+                            $('.status').html('<p class="error">'+data.msg+'</p>');
+                        }
+                        $('#subscribeBtn').removeAttr("disabled");
+                        $('.content-frm').css('opacity', '');
+                    }
+                });
+            }
+        });
+    });
+    </script>
